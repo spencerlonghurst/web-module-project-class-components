@@ -1,12 +1,19 @@
 import React from 'react';
 import Form from './Form';
-import Todo from './Todo';
 import Todolist from './TodoList';
+
+
+
+
+
+
+
+
 
 let idNum = 0
 const getIdNum = () => ++idNum
 
-const list = [
+const todos = [
   {
     name: 'Organize Garage',
     id: getIdNum(),
@@ -15,12 +22,12 @@ const list = [
   {
     name: 'Bake Cookies',
     id: getIdNum(),
-    completed: false
+    completed: true
   }
 ]
 
 const initialState = {
-  list,
+  todos,
 }
 
 export default class App extends React.Component {
@@ -29,24 +36,12 @@ export default class App extends React.Component {
 
   render() {
     console.log('state is', this.state)
-    const { list } = this.state
+    const { todos } = this.state
 
     return (
       <div>
         <h2>Todos:</h2>
-        <ul>
-          {
-            list.map((list) => {
-              const { name, id } = list
-              return (
-                <li key={id}>
-                  {name}
-                </li>
-              )
-            })
-          }
-        </ul>
-        <Todo />
+        <Todolist todos={todos}/>
         <Form />
       </div>
     )
