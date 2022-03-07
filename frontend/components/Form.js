@@ -4,7 +4,11 @@ export default class Form extends React.Component {
   render() {
     return (
       <div>
-        Form
+        <input
+        type='text'
+        />
+        <button>Submit</button>
+        <button>Hide Completed</button>
       </div>
     )
   }
