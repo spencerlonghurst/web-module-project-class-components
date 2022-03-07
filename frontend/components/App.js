@@ -9,12 +9,12 @@ const getIdNum = () => ++idNum
 const list = [
   {
     name: 'Organize Garage',
-    id: getIdNum,
+    id: getIdNum(),
     completed: false
   },
   {
     name: 'Bake Cookies',
-    id: getIdNum,
+    id: getIdNum(),
     completed: false
   }
 ]
@@ -29,13 +29,22 @@ export default class App extends React.Component {
 
   render() {
     console.log('state is', this.state)
+    const { list } = this.state
 
     return (
       <div>
         <h2>Todos:</h2>
         <ul>
-          <li>Organize the Messy Garage</li>
-          <li>Bake all of the Chocolate Chip cookies</li>
+          {
+            list.map((list) => {
+              const { name, id } = list
+              return (
+                <li key={id}>
+                  {name}
+                </li>
+              )
+            })
+          }
         </ul>
         <Todo />
         <Form />
