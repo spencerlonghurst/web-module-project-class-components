@@ -1,15 +1,28 @@
 import React from 'react'
 
 export default class Form extends React.Component {
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.handleAdd();
+  }
+
+  
+
   render() {
     return (
-      <div>
+      <form >
         <input
         type='text'
+        placeholder='To do...'
         />
-        <button>Submit</button>
-        <button>Hide Completed</button>
-      </div>
+        <button
+        onClick={this.handleSubmit}
+        >Submit</button>
+        <button
+        onClick={this.handleClear}
+        >
+          Hide Completed</button>
+      </form>
     )
   }
 }
